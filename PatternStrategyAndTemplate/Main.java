@@ -5,10 +5,6 @@ import java.util.Scanner;
 
 interface ParserStrategy extends Info {
     String parse(String input);
-
-    public default String execute(String inputLine) {
-        return parse(inputLine);
-    }
 }
 
 class LettersParser implements ParserStrategy {
@@ -128,7 +124,7 @@ public class Main {
             parser.printAlgorithmName();
             parser.printAlgorithmDescription();
             long startTime = System.nanoTime();
-            String result = parser.execute(input);
+            String result = parser.parse(input);
             long endTime = System.nanoTime();
             System.out.println("Результат парсинга: " + result);
             long executionTime = endTime - startTime;
